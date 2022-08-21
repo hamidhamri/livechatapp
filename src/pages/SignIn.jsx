@@ -77,7 +77,7 @@ export default function SignIn(props) {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Required"),
+      email: Yup.string().email("Invalid email address"),
       password: Yup.string().required("No password provided."),
     }),
     onSubmit: (values) => {
