@@ -180,7 +180,6 @@ export const unFollowUserAction = (id) => async (dispatch, getState) => {
     );
 
     dispatch({ type: "UNFOLLOW_USER_SUCCESS", payload: data });
-    console.log(data);
     localStorage.setItem("userInfo", JSON.stringify(data));
     dispatch({ type: "LOGIN_SUCCESS", payload: data });
   } catch (err) {

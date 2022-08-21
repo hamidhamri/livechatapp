@@ -14,9 +14,6 @@ export const addPostAction =
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-
-      console.log(image);
-
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/posts/createPost`,
         { description, image, dimensions },

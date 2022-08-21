@@ -36,7 +36,7 @@ const Friends = () => {
       {userInfo && (
         <div
           data-aos="fade-right"
-          className={`relative grid min-h-screen grid-cols-[35rem_1fr_42rem] p-6 xl:grid-cols-[35rem_1fr] xlg:block ${
+          className={`relative grid min-h-screen grid-cols-[40rem_1fr_42rem] p-6 xl:grid-cols-[40rem_1fr] xlg:block ${
             theme === "light" ? "text-gray-600" : "text-white "
           } `}
         >

@@ -46,7 +46,6 @@ const MyProfile = () => {
     if (successPictureUpdate) {
       dispatch({ type: "UPDATE_USER_PICTURES_RESET" });
       toast.success("Picture updated successfully", toastOptions);
-      console.log("success BABY");
     } else if (errorPictureUpdate) {
       dispatch({ type: "UPDATE_USER_PICTURES_RESET" });
       toast.error("There was an updating picture", toastOptions);

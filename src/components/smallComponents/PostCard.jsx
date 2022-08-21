@@ -79,8 +79,6 @@ const PostCard = () => {
     }
   };
 
-  console.log(imageToDisplay);
-
   return (
     <div
       className={`PostCard shadow- z-10 mb-10 flex flex-col overflow-hidden rounded-lg p-2 ${

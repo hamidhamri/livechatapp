@@ -41,7 +41,6 @@ const CropModal = ({
       setImageToUpload(file);
 
       if (setImageToDisplay) {
-        console.log(url);
         setImageToDisplay(url);
       }
       setOpenCrop(false);

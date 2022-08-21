@@ -50,7 +50,6 @@ const AllFollowings = () => {
         {followers && followers.length > 0
           ? followers.map(
               (follower) => (
-                console.log(follower),
                 (<EachFollowing key={follower._id} follower={follower} />)
               )
             )

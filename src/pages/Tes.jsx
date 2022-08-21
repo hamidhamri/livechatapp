@@ -11,8 +11,6 @@ const Tes = () => {
     hamidRef.current = "Lhamruss";
   }, []);
 
-  console.log(page, hamidRef.current);
-
   return (
     <div id="scrollableDiv" className="z-50 h-[50rem] overflow-scroll bg-[red]">
       <input

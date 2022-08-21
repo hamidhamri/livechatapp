@@ -72,17 +72,18 @@ const Posts = () => {
   }, [success, allPosts, successUpdatePicture]);
 
   if (allPosts && id === userInfo?.data._id) {
+    if (allPosts.length === 0) hasMore(false);
     allPosts = allPosts.filter((post) => post.userId === userInfo?.data._id);
   }
 
   if (allPosts && id && id !== userInfo?.data._id) {
+    if (allPosts.length === 0) hasMore(false);
     allPosts = allPosts.filter((post) => post.userId === id);
   }
 
   useEffect(() => {
     if (socket) {
       socket.on("likeReceive", (data) => {
-        console.log(data);
         toast.info(`${data.senderId.name} liked your post`, toastOptions);
         dispatch(notificationsAction(data));
       });

@@ -103,7 +103,6 @@ const App = () => {
   useEffect(() => {
     if (socket) {
       socket.on("commentReceive", (data) => {
-        console.log(data);
         dispatch(notificationsAction(data));
         toast.info(
           `${data.senderId.name} commented on your post`,

@@ -91,7 +91,6 @@ export default function SignUp() {
         .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
     }),
     onSubmit: function (values) {
-      console.log(values);
       dispatch(
         registerAction(values.name, values.email.toLowerCase(), values.password)
       );
