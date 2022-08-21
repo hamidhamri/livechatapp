@@ -1,0 +1,72 @@
+/* :root {
+  --yellow: #f5c32c;
+  --orange: #fca61f;
+  --black: #242d49;
+  --gray: rgba(36, 45, 73, 0.65);
+  --profileShadow: 0px 4px 17px 2px rgba(0, 0, 0, 0.25);
+  --hrColor: #cfcdcd;
+  --cardColor: rgba(255, 255, 255, 0.64);
+  --buttonBg: linear-gradient(98.63deg, #f9a225 0%, #f95f35 100%);
+  --inputColor: rgba(40, 52, 62, 0.07);
+  --photo: #4cb256;
+  --video: #4a4eb7;
+  --location: #ef5757;
+  --shedule: #e1ae4a;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.react-input-emoji--input {
+  word-break: break-word;
+}
+/* 
+.css-136u0op-MuiButtonBase-root-MuiIconButton-root {
+  background-color: #f9a225 !important
+  ;
+} */
+
+.input-modified-dark {
+  background-color: #3a3b3c !important;
+  border-color: #3a3b3c !important;
+  color: #fff !important;
+}
+
+.input-modified-white {
+  background-color: #f3f3f3 !important;
+  border-color: #3a3b3c !important;
+}
+
+#myTextArea:active {
+  font-size: 16px; /* `16px` is safer I assume, although `1rem` works too */
+}
+
+.disabledButton:disabled {
+  background-color: #cccccc;
+  background-image: none;
+  color: #666666;
+}
