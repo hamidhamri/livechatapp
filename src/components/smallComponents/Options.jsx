@@ -43,6 +43,7 @@ const Options = () => {
           `${process.env.REACT_APP_API_URL}/notifications/getAllNotifications`,
           config
         );
+        // console.log(data);
         const unreadNotification = data.filter(
           (notification) => notification.read === false
         );
