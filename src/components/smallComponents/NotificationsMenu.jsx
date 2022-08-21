@@ -86,6 +86,7 @@ const NotificationsMenu = ({ anchorEl, open, handleClose }) => {
         notifications.length > 0 &&
         notifications.map((notification) => (
           <MenuItem
+            style={{ cursor: "pointer" }}
             onClick={() => handleOnClickNotification(notification)}
             key={notification._id}
           >
