@@ -47,8 +47,8 @@ const Posts = () => {
       }`,
       config
     );
+    setLoading(false);
     if (data.data.length > 0) {
-      setLoading(false);
       setAllPosts([...allPosts, ...data.data]);
     } else {
       setHasMore(false);
