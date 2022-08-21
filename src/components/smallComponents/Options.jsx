@@ -43,10 +43,10 @@ const Options = () => {
           `${process.env.REACT_APP_API_URL}/notifications/getAllNotifications`,
           config
         );
-        // console.log(data);
         const unreadNotification = data.filter(
           (notification) => notification.read === false
         );
+        console.log("WELCOME TO HAMID HAMRI");
         setNumberOfUnreadNotifications(unreadNotification.length);
         state.notifications = data;
       } catch (err) {
