@@ -50,7 +50,7 @@ const SearchBar = () => {
 
   return (
     <form className="flex items-center gap-x-4">
-      <a href="http://localhost:3000">
+      <a href={`https://www.hamidhamrichatapp.netlify.app`}>
         <img src="/images/logo.png" alt="logo" />
       </a>
       <div className="SearchInput basis-auto">
