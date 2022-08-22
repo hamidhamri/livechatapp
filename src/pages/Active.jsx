@@ -68,6 +68,7 @@ export default function Active(props) {
     (el) => el.updateUserToActive
   );
   const { userInfo } = useSelector((el) => el.userLogin);
+  const { theme: themeColor } = useSelector((el) => el.theme);
 
   React.useEffect(() => {
     if (success) {
@@ -93,13 +94,13 @@ export default function Active(props) {
 
   return (
     <>
-      <div className="mt-64">
+      <div className="flex h-screen items-center bg-[#f3f3f3]">
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
               sx={{
-                marginTop: 8,
+                marginTop: "1rem",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
