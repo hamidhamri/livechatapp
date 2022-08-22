@@ -48,6 +48,7 @@ const FollowersCard = ({ setOnFollow }) => {
         if (data.following === userInfo?.data._id) {
           soundPlay();
           setOnFollow(data.name);
+          userInfo?.data.followers.push(data.follower);
           dispatch(
             notificationsAction({
               type: "follow",
