@@ -23,6 +23,13 @@ const MyProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!userInfo?.data) {
+      navigate("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userInfo]);
+
   const { userInfo } = useSelector((state) => state.userLogin);
   const { success: successPictureUpdate, error: errorPictureUpdate } =
     useSelector((state) => state.updateUserPictures);
@@ -70,13 +77,6 @@ const MyProfile = () => {
     successAddPost,
     errorAddPost,
   ]);
-
-  useEffect(() => {
-    if (!userInfo) {
-      navigate("/login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
