@@ -46,7 +46,6 @@ const Options = () => {
         const unreadNotification = data.filter(
           (notification) => notification.read === false
         );
-        console.log("WELCOME TO HAMID HAMRI");
         setNumberOfUnreadNotifications(unreadNotification.length);
         state.notifications = data;
       } catch (err) {
