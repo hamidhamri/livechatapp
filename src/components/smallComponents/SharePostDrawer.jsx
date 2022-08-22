@@ -42,7 +42,7 @@ const SharePostDrawer = ({ setSharePostSuccess, setSharePostError }) => {
   return (
     <Drawer
       sx={{
-        ".css-1160xiw-MuiPaper-root-MuiDrawer-paper": {
+        ".css-1ab2xsx": {
           backgroundColor: theme === "light" ? "#f3f3f3" : "#202124",
         },
       }}
