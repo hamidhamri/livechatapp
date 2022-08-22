@@ -72,12 +72,12 @@ const Posts = () => {
   }, [success, allPosts, successUpdatePicture]);
 
   if (allPosts && id === userInfo?.data._id) {
-    if (allPosts.length === 0) hasMore(false);
+    if (allPosts.length === 0) setHasMore(false);
     allPosts = allPosts.filter((post) => post.userId === userInfo?.data._id);
   }
 
   if (allPosts && id && id !== userInfo?.data._id) {
-    if (allPosts.length === 0) hasMore(false);
+    if (allPosts.length === 0) setHasMore(false);
     allPosts = allPosts.filter((post) => post.userId === id);
   }
 
