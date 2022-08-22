@@ -13,7 +13,7 @@ const Notifications = () => {
   const { theme } = useSelector((state) => state.theme);
   const { notifications } = useSelector((state) => state.notifications);
   return (
-    <div className="p-4">
+    <div className="min-h-screen p-4">
       {notifications.map((notification) => (
         <div
           onClick={() =>
