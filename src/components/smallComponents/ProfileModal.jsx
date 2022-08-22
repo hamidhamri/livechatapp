@@ -74,7 +74,7 @@ const ProfileModal = ({ setOpen, open, user }) => {
       setOpen(false);
       formik.values.name = user.name || "";
       formik.values.email = user.email || "";
-      formik.values.password = user.password || "";
+      formik.values.password = "";
       formik.values.status = user.status || "";
       formik.values.about = user.about || "";
       formik.values.relationship = user.relationship || "";
