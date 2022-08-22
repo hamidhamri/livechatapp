@@ -72,6 +72,7 @@ const ProfileCard = ({ location }) => {
 
   useEffect(() => {
     setProfile(userInfoOther?.data);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userInfoOther]);
 

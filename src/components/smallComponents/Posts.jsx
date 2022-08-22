@@ -72,12 +72,16 @@ const Posts = () => {
   }, [success, allPosts, successUpdatePicture]);
 
   if (allPosts && id === userInfo?.data._id) {
-    if (allPosts.length === 0) setHasMore(false);
+    if (allPosts.length === 0 && hasMore !== false) {
+      setHasMore(false);
+    }
     allPosts = allPosts.filter((post) => post.userId === userInfo?.data._id);
   }
 
   if (allPosts && id && id !== userInfo?.data._id) {
-    if (allPosts.length === 0) setHasMore(false);
+    if (allPosts.length === 0 && hasMore !== false) {
+      setHasMore(false);
+    }
     allPosts = allPosts.filter((post) => post.userId === id);
   }
 
@@ -95,7 +99,7 @@ const Posts = () => {
     <div className="sm:max-w-[100%] sm:overflow-visible">
       {/* {error && <Alert severity="error">{error}</Alert>} */}
       {loading &&
-        allPosts.length === 0 &&
+        allPosts.length !== 0 &&
         [...Array(2)].map((el, index) => (
           <Stack key={index + 2} sx={{ mb: 4 }} direction="column">
             <Stack
