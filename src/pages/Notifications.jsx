@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import MessageIcon from "@mui/icons-material/Message";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -12,6 +12,14 @@ const Notifications = () => {
 
   const { theme } = useSelector((state) => state.theme);
   const { notifications } = useSelector((state) => state.notifications);
+
+  useEffect(() => {
+    if (window.innerWidth > 1279) {
+      navigate("/");
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen p-4">
       {notifications.map((notification) => (
