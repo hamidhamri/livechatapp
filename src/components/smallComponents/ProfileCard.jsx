@@ -129,7 +129,7 @@ const ProfileCard = ({ location }) => {
           const reader = new FileReader();
           reader.onload = (e) => resolve(e.target.result);
           reader.onerror = (e) => reject(e);
-          reader.readAsArrayBuffer(imageToUpload);
+          reader.readAsArrayBuffer(imageToUpload.file);
         });
         const now = Date.now() + imageToUpload.size;
         await axios.put(
