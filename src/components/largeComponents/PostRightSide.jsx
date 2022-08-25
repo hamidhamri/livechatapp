@@ -103,7 +103,7 @@ const PostRightSide = ({ post }) => {
           {post?.data.userIdToPopulate.profilePicture ? (
             <img
               className="h-full w-full object-cover object-top"
-              src={`${process.env.REACT_APP_IMAGE_URL}${post?.data.userIdToPopulate.profilePicture}`}
+              src={post?.data.userIdToPopulate.profilePicture}
               alt="profile"
             />
           ) : (

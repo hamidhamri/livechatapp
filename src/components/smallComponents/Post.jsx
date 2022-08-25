@@ -60,7 +60,7 @@ const Post = ({ post }) => {
           <div className="h-[4rem] w-[4rem] overflow-hidden rounded-full">
             <img
               className="h-full w-full object-cover object-top"
-              src={`${process.env.REACT_APP_IMAGE_URL}${post?.userIdToPopulate?.profilePicture}`}
+              src={post?.userIdToPopulate?.profilePicture}
               alt="img1"
             />
           </div>
@@ -82,7 +82,7 @@ const Post = ({ post }) => {
             style={{ display: `${imageLoaded ? "block" : "none"}` }}
             onLoad={() => setImageLoaded(true)}
             className="absolute top-0 left-0  w-full object-contain object-center"
-            src={`${process.env.REACT_APP_IMAGE_URL}${post.image}`}
+            src={post.image}
             alt="img2"
           />
           <Skeleton

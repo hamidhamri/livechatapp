@@ -144,7 +144,7 @@ const Chat = () => {
                     <img
                       onError={() => setErrorLoadingProfilePicture(true)}
                       className="h-full w-full object-cover object-top"
-                      src={`${process.env.REACT_APP_IMAGE_URL}${userInfo?.data.profilePicture}`}
+                      src={userInfo?.data.profilePicture}
                       alt="chat"
                     />
                   ) : (

@@ -26,7 +26,7 @@ const PostLeftSide = ({ post }) => {
             <img
               onLoad={() => setImageLoaded(true)}
               className=" h-full w-full object-contain"
-              src={`${process.env.REACT_APP_IMAGE_URL}${post?.data.image}`}
+              src={post?.data.image}
               alt="profile"
             />
           </div>

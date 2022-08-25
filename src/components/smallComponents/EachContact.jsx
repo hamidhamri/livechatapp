@@ -37,7 +37,7 @@ const EachContact = ({ chat, currentUser, token, onlineUserHandler }) => {
           <div className="image h-20 w-20 overflow-hidden rounded-full">
             <img
               className="h-full w-full object-cover object-top"
-              src={`${process.env.REACT_APP_IMAGE_URL}${user?.data.profilePicture}`}
+              src={user?.data.profilePicture}
               alt="chat"
             />
           </div>

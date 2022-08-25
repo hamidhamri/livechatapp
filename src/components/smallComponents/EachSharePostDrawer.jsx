@@ -87,7 +87,7 @@ export const EachSharePostDrawer = ({
             <div className="f-20 h-20 max-h-20 max-w-[5rem] overflow-hidden rounded-full">
               <img
                 className="h-full w-full object-cover object-center"
-                src={`${process.env.REACT_APP_IMAGE_URL}${user?.data.profilePicture}`}
+                src={user?.data.profilePicture}
                 alt="follower"
               />
             </div>

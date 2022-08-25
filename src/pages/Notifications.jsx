@@ -36,7 +36,7 @@ const Notifications = () => {
           <div className=" flex  h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-gray-200">
             <img
               className="h-full w-full"
-              src={`${process.env.REACT_APP_IMAGE_URL}${notification.senderId.profilePicture}`}
+              src={notification.senderId.profilePicture}
               alt="comment"
             />
           </div>

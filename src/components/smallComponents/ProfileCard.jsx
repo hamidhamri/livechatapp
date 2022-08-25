@@ -125,12 +125,24 @@ const ProfileCard = ({ location }) => {
   const sendImage = async (imageToUpload) => {
     if (imageToUpload) {
       try {
-        const formData = new FormData();
-        formData.append(`${imageToUpload.type}`, imageToUpload.file);
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_API_URL}/images/upload`,
-          formData
+        const blob = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.onerror = (e) => reject(e);
+          reader.readAsArrayBuffer(imageToUpload);
+        });
+        const now = Date.now() + imageToUpload.size;
+        await axios.put(
+          `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg?sp=acw&st=2022-08-25T21:06:19Z&se=2022-08-26T05:06:19Z&sv=2021-06-08&sr=c&sig=4ym7F%2BnQfV1%2FYsnNVBXal3QiAOPb7DbsMffNvIlPvb4%3D`,
+          blob,
+          {
+            headers: {
+              "x-ms-blob-type": "BlockBlob",
+              "Content-Type": "image/jpeg",
+            },
+          }
         );
+        const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
         if (imageToUpload.type === "coverPic") {
           dispatch(updateUserPicturesAction(undefined, data));
         } else {
@@ -171,9 +183,7 @@ const ProfileCard = ({ location }) => {
             className={`CoverPic ${
               location === "profile" && "cursor-pointer"
             } h-full w-full object-cover object-top`}
-            src={`${process.env.REACT_APP_IMAGE_URL}${
-              profile?.coverPicture && profile?.coverPicture
-            }`}
+            src={profile?.coverPicture && profile?.coverPicture}
             alt="cover"
           />
 
@@ -205,9 +215,7 @@ const ProfileCard = ({ location }) => {
             className={`ProfilePic h-full w-full object-cover object-top  ${
               location === "profile" && "cursor-pointer"
             }  shadow-md shadow-gray-500`}
-            src={`${process.env.REACT_APP_IMAGE_URL}${
-              profile?.profilePicture && profile?.profilePicture
-            }`}
+            src={profile?.profilePicture && profile?.profilePicture}
             alt="profile"
           />
 

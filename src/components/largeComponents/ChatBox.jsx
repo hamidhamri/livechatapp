@@ -248,7 +248,7 @@ const ChatBox = ({ chatSelected, setChatSelected }) => {
               {user?.data ? (
                 <img
                   className="h-full w-full object-cover object-top"
-                  src={`${process.env.REACT_APP_IMAGE_URL}${user?.data.profilePicture}`}
+                  src={user?.data.profilePicture}
                   alt="chat"
                 />
               ) : (

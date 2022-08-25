@@ -60,13 +60,25 @@ const PostCard = () => {
       setErrorAddPost("Both Image and Description are required");
     }
     if (imageToUpload && description && dimensions) {
-      const newPost = new FormData();
-      newPost.append("postImage", imageToUpload);
       try {
-        const { data } = await axios.post(
-          `${process.env.REACT_APP_API_URL}/images/upload`,
-          newPost
+        const blob = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve(e.target.result);
+          reader.onerror = (e) => reject(e);
+          reader.readAsArrayBuffer(imageToUpload);
+        });
+        const now = Date.now() + imageToUpload.size;
+        await axios.put(
+          `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg?sp=acw&st=2022-08-25T21:06:19Z&se=2022-08-26T05:06:19Z&sv=2021-06-08&sr=c&sig=4ym7F%2BnQfV1%2FYsnNVBXal3QiAOPb7DbsMffNvIlPvb4%3D`,
+          blob,
+          {
+            headers: {
+              "x-ms-blob-type": "BlockBlob",
+              "Content-Type": "image/jpeg",
+            },
+          }
         );
+        const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
         dispatch(addPostAction(description, data, dimensions));
         setErrorImageUpload(false);
         setErrorAddPost(null);
@@ -93,7 +105,7 @@ const PostCard = () => {
             <img
               onError={() => setErrorLoadingProfilePicture(true)}
               className="h-full w-full object-cover object-top"
-              src={`${process.env.REACT_APP_IMAGE_URL}${userInfo?.data.profilePicture}`}
+              src={userInfo?.data.profilePicture}
               alt="profile"
             />
           ) : (

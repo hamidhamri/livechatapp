@@ -33,7 +33,7 @@ const EachComment = ({ comment }) => {
                 <img
                   onLoad={() => setimageloaded(true)}
                   className="h-full w-full object-cover object-top"
-                  src={`${process.env.REACT_APP_IMAGE_URL}${comment?.userId?.profilePicture}`}
+                  src={comment?.userId?.profilePicture}
                   alt="profile"
                 />
               </div>

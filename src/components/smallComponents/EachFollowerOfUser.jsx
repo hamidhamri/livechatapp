@@ -23,10 +23,7 @@ const EachFollowerOfUser = ({ follower, socket }) => {
   const handleUnFollowUser = () => {
     dispatch(unFollowUserAction(follower._id));
     setFollowed((prev) => !prev);
-  
   };
-
-
 
   return (
     <div className="EachFollowerOfUser mb-2  flex items-center gap-4">
@@ -34,7 +31,7 @@ const EachFollowerOfUser = ({ follower, socket }) => {
         <div className="max-h-24 max-w-[6rem] overflow-hidden rounded-full">
           <img
             className="object-cover object-center"
-            src={`${process.env.REACT_APP_IMAGE_URL}${follower.profilePicture}`}
+            src={follower.profilePicture}
             alt="follower"
           />
         </div>
