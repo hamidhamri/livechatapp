@@ -38,7 +38,12 @@ const CropModal = ({
       if (setDimensions) {
         setDimensions({ height, width });
       }
-      setImageToUpload(file);
+      setImageToUpload((prev) => {
+        return {
+          ...prev,
+          file,
+        };
+      });
 
       if (setImageToDisplay) {
         setImageToDisplay(url);
