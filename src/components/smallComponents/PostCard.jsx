@@ -65,9 +65,10 @@ const PostCard = () => {
           const reader = new FileReader();
           reader.onload = (e) => resolve(e.target.result);
           reader.onerror = (e) => reject(e);
-          reader.readAsArrayBuffer(imageToUpload);
+          reader.readAsArrayBuffer(imageToUpload.file);
         });
-        const now = Date.now() + userInfo?.data._id;
+        const now = Date.now() + userInfo.data._id;
+
         await axios.put(
           `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg?sp=acw&st=2022-08-25T21:06:19Z&se=2022-08-26T05:06:19Z&sv=2021-06-08&sr=c&sig=4ym7F%2BnQfV1%2FYsnNVBXal3QiAOPb7DbsMffNvIlPvb4%3D`,
           blob,
@@ -79,6 +80,7 @@ const PostCard = () => {
           }
         );
         const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
+        console.log(data);
         dispatch(addPostAction(description, data, dimensions));
         setErrorImageUpload(false);
         setErrorAddPost(null);
