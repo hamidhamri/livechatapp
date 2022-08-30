@@ -98,11 +98,10 @@ const NotificationsMenu = ({ anchorEl, open, handleClose }) => {
               <div className=" flex  h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-gray-200">
                 <img
                   className="h-full w-full"
-                  src={`${process.env.REACT_APP_IMAGE_URL}${
-                    notification?.senderId?.profilePicture
-                      ? notification.senderId.profilePicture
-                      : "/images/default.jpg"
-                  }`}
+                  src={
+                    notification?.senderId?.profilePicture &&
+                    notification.senderId.profilePicture
+                  }
                   alt="comment"
                 />
               </div>
