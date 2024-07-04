@@ -27,11 +27,10 @@ export const EachSharePostDrawer = ({
           Authorization: `Bearer ${userInfo?.token}`,
         },
       };
-
       const { data } = await axios.post(
         `${process.env.REACT_APP_API_URL}/messages/createMessage`,
         {
-          text: `http://192.168.1.254:3000/post/${sharePost}`,
+          text: `${process.env.REACT_APP_REAL_URL}/post/${sharePost}`,
           chatId: chat._id,
           senderId: userInfo?.data._id,
         },

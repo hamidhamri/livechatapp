@@ -65,7 +65,7 @@ const Posts = () => {
       dispatch({ type: "RESET_POST" });
       dispatch({ type: "UPDATE_USER_PICTURES_RESET" });
       if (success) {
-        window.location.href = "https://hamidhamrichatapp.netlify.app/";
+        window.location.href = `${process.env.REACT_APP_REAL_URL}`;
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

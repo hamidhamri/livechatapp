@@ -1,4 +1,6 @@
 import axios from "axios";
+import { toast } from "react-toastify";
+import toastOptions from "../pages/Home.jsx"
 
 export const getUserInfoAction = (id) => async (dispatch, getState) => {
   try {
@@ -79,7 +81,6 @@ export const updateUserPicturesAction =
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
-
       const { data } = await axios.patch(
         `${process.env.REACT_APP_API_URL}/users/updateUserPictures`,
         { profilePicture, coverPicture },

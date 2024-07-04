@@ -23,13 +23,6 @@ const MyProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!userInfo?.data) {
-      navigate("/login");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userInfo]);
-
   const { userInfo } = useSelector((state) => state.userLogin);
   const { success: successPictureUpdate, error: errorPictureUpdate } =
     useSelector((state) => state.updateUserPictures);
@@ -38,6 +31,14 @@ const MyProfile = () => {
   const { success: successAddPost, error: errorAddPost } = useSelector(
     (state) => state.addPost
   );
+
+  console.log(userInfo)
+  useEffect(() => {
+    if (!userInfo?.data) {
+      navigate("/login");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userInfo]);
 
   useEffect(() => {
     AOS.init();
@@ -61,7 +62,7 @@ const MyProfile = () => {
       toast.success("Profile updated successfully", toastOptions);
     } else if (errorProfileUpdate) {
       dispatch({ type: "UPDATE_USER_INFO_RESET" });
-      toast.error("There was an updating profile", toastOptions);
+      toast.error("There was an error while updating profile " + (errorProfileUpdate ?? "") , toastOptions);
     } else if (successAddPost) {
       dispatch({ type: "RESET_POST" });
       toast.success("Post added successfully", toastOptions);

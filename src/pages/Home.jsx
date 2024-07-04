@@ -12,7 +12,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import BottomNavBar from "../components/smallComponents/BottomNavBar";
 
-const toastOptions = {
+export const toastOptions = {
   position: "bottom-right",
   autoClose: 5000,
   closeOnClick: true,
@@ -33,6 +33,8 @@ const Home = () => {
   const { success: successAddPost, error: errorAddPost } = useSelector(
     (state) => state.addPost
   );
+
+  console.log(process.env)
 
   useEffect(() => {
     AOS.init();

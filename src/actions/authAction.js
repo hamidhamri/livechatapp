@@ -42,6 +42,7 @@ export const registerAction = (name, email, password) => async (dispatch) => {
       { name, email, password },
       config
     );
+    console.log(data)
     dispatch({ type: "REGISTER_SUCCESS", payload: data });
     dispatch({ type: "LOGIN_SUCCESS", payload: data });
     localStorage.setItem("userInfo", JSON.stringify(data));

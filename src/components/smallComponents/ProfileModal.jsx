@@ -19,6 +19,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { updateUserInfoAction } from "../../actions/userAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { toastOptions } from "../../pages/Home";
 
 const t = createMuiTheme({
   palette: {
@@ -69,6 +71,7 @@ const ProfileModal = ({ setOpen, open, user }) => {
     (state) => state.updateUserInfo
   );
 
+
   useEffect(() => {
     if (success) {
       setOpen(false);
@@ -82,7 +85,7 @@ const ProfileModal = ({ setOpen, open, user }) => {
       formik.values.working = user.working || "";
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [success]);
+  }, [success,error]);
 
   const formik = useFormik({
     initialValues: {

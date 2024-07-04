@@ -7,6 +7,7 @@ import { Skeleton, Stack } from "@mui/material";
 
 const AllFollowersOfUser = () => {
   const [followers, setFollowers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const renderOnce = React.useRef(true);
 
   const { userInfo } = useSelector((state) => state.userLogin);
@@ -34,6 +35,7 @@ const AllFollowersOfUser = () => {
         setFollowers((prev) => [...prev, data.data]);
       });
     };
+    setLoading(false)
     if (renderOnce.current) {
       fetchFollowers();
     }
@@ -49,11 +51,7 @@ const AllFollowersOfUser = () => {
         People who followed you
       </h2>
       <div className="AllFollowers flex max-w-[80vh] flex-col gap-y-4 overflow-scroll">
-        {followers && followers.length > 0
-          ? followers.map((follower) => (
-              <EachFollowerOfUser key={follower._id} follower={follower} />
-            ))
-          : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+        {loading && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
               <Stack
                 direction={"row"}
                 spacing={2}
@@ -74,6 +72,11 @@ const AllFollowersOfUser = () => {
                 />
               </Stack>
             ))}
+        {!loading && followers.length > 0
+          ? followers.map((follower) => (
+              <EachFollowerOfUser key={follower._id} follower={follower} />
+            ))
+          : <div className="text-2xl font-semibold">No one is following you</div>}
       </div>
     </div>
   );

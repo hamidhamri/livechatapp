@@ -60,27 +60,39 @@ const PostCard = () => {
       setErrorAddPost("Both Image and Description are required");
     }
     if (imageToUpload && description && dimensions) {
-      try {
-        const blob = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = (e) => resolve(e.target.result);
-          reader.onerror = (e) => reject(e);
-          reader.readAsArrayBuffer(imageToUpload.file);
-        });
-        const now = Date.now() + userInfo.data._id;
 
-        await axios.put(
-          `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg?sv=2021-06-08&ss=bf&srt=o&sp=rwdactfx&se=2023-08-30T21:17:22Z&st=2022-08-30T13:17:22Z&spr=https&sig=zMcLJ%2FVsNyETLwe29lkHy9WcfrgIpHpUxJS59n1JLV8%3D`,
-          blob,
-          {
-            headers: {
-              "x-ms-blob-type": "BlockBlob",
-              "Content-Type": "image/jpeg",
-            },
-          }
-        );
-        const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
-        console.log(data);
+      try {
+        
+       const formData = new FormData();
+       formData.append('file', imageToUpload.file);
+       formData.append('upload_preset', 'c7f4fucz');
+
+       const response = await axios.post(
+         `https://api.cloudinary.com/v1_1/dnnaq2dbk/image/upload`,
+         formData
+       );
+       const data = response.data.secure_url;
+
+        // const blob = await new Promise((resolve, reject) => {
+        //   const reader = new FileReader();
+        //   reader.onload = (e) => resolve(e.target.result);
+        //   reader.onerror = (e) => reject(e);
+        //   reader.readAsArrayBuffer(imageToUpload.file);
+        // });
+        // const now = Date.now() + userInfo.data._id;
+
+        // await axios.put(
+        //   `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg?sv=2021-06-08&ss=bf&srt=o&sp=rwdactfx&se=2023-08-30T21:17:22Z&st=2022-08-30T13:17:22Z&spr=https&sig=zMcLJ%2FVsNyETLwe29lkHy9WcfrgIpHpUxJS59n1JLV8%3D`,
+        //   blob,
+        //   {
+        //     headers: {
+        //       "x-ms-blob-type": "BlockBlob",
+        //       "Content-Type": "image/jpeg",
+        //     },
+        //   }
+        // );
+        // const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
+        // console.log(data);
         dispatch(addPostAction(description, data, dimensions));
         setErrorImageUpload(false);
         setErrorAddPost(null);

@@ -3,7 +3,7 @@ import reducers from "../reducers/";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose } from "redux";
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const userInfoFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
@@ -17,7 +17,7 @@ const initialState = {
   userLogin: { userInfo: userInfoFromLocalStorage },
   theme: { theme },
 };
-const store = createStore(reducers, initialState, applyMiddleware(thunk));
+const store = createStore(reducers, initialState, composeEnhancers(applyMiddleware(thunk)));
 
 store.subscribe(() => {
   store.getState().userLogin.userInfo?.data?.name &&

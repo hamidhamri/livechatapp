@@ -66,6 +66,7 @@ const FollowersCard = ({ setOnFollow }) => {
   }, [socket]);
 
   const handleFollow = () => {
+    console.log(users)
     return users?.data
       .filter((user) => !user.followers.includes(userInfo?.data._id))
       .map((follower, index) => (

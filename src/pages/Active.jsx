@@ -214,7 +214,7 @@ export default function Active(props) {
                         {error === "Your account is already active" ? (
                           <>
                             {error}, please go to{" "}
-                            <LinkReact to="/localhost:3000/login">
+                            <LinkReact to={`/${process.env.REACT_APP_REAL_URL}/login`}>
                               <span className=" border-b border-gray-500">
                                 Login
                               </span>

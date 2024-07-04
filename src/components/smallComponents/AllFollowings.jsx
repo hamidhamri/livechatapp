@@ -6,6 +6,7 @@ import axios from "axios";
 import { Skeleton, Stack } from "@mui/material";
 const AllFollowings = () => {
   const [followers, setFollowers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const renderOnce = React.useRef(true);
   const { userInfo } = useSelector((state) => state.userLogin);
 
@@ -23,6 +24,7 @@ const AllFollowings = () => {
         `${process.env.REACT_APP_API_URL}/users/getOneUser/${id}`,
         config
       );
+      console.log("dataUser")
 
       dataUser?.data.following.map(async (id) => {
         const { data } = await axios.get(
@@ -31,6 +33,7 @@ const AllFollowings = () => {
         );
         setFollowers((prev) => [...prev, data.data]);
       });
+      setLoading(false)
     };
     if (renderOnce.current) {
       fetchFollowers();
@@ -41,19 +44,15 @@ const AllFollowings = () => {
     };
   }, [id]);
 
+
   return (
     <div className="FollowersCard z-10">
       <h2 className="FollowersCardText mb-10 text-3xl font-bold">
         People you are following
       </h2>
       <div className="AllFollowers flex max-w-[100vh] flex-col gap-y-4 overflow-scroll">
-        {followers && followers.length > 0
-          ? followers.map(
-              (follower) => (
-                (<EachFollowing key={follower._id} follower={follower} />)
-              )
-            )
-          : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+
+        {loading && [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
               <Stack
                 direction={"row"}
                 spacing={2}
@@ -74,6 +73,13 @@ const AllFollowings = () => {
                 />
               </Stack>
             ))}
+        {!loading && followers.length > 0
+          ? followers.map(
+              (follower) => (
+                (<EachFollowing key={follower._id} follower={follower} />)
+              )
+            )
+          : <div className="text-3xl font-semibold">You are not following anyone</div>}
       </div>
     </div>
   );
