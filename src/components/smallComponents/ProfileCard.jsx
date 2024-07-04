@@ -167,7 +167,7 @@ const ProfileCard = ({ location }) => {
     }
   };
 
-  if (userInfoOther?.status !== "success") {
+  if (profile?._id !== userInfo?.data._id && userInfoOther?.status !== "success") {
     return (
       <div className="max-h-80 flex flex-col items-center justify-center h-screen">
         <div className="max-w-md p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md">
