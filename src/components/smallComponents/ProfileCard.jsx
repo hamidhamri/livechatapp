@@ -56,6 +56,7 @@ const ProfileCard = ({ location }) => {
     (state) => state.unFollowUser
   );
 
+
   const { id } = useParams();
 
   const [profile, setProfile] = React.useState(userInfoOther?.data);
@@ -165,6 +166,21 @@ const ProfileCard = ({ location }) => {
       setImageToDisplay(null);
     }
   };
+
+  if (userInfoOther?.status !== "success") {
+    return (
+      <div className="max-h-80 flex flex-col items-center justify-center h-screen">
+        <div className="max-w-md p-8 bg-white dark:bg-gray-900 rounded-lg shadow-md">
+          <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">User Not Found</h1>
+          <p className="mt-4 text-base text-gray-600 dark:text-gray-400">
+            We're sorry, but we couldn't find the user you're looking for.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+
 
   return (
     <div
