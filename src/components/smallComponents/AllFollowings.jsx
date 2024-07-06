@@ -24,7 +24,6 @@ const AllFollowings = () => {
         `${process.env.REACT_APP_API_URL}/users/getOneUser/${id}`,
         config
       );
-      console.log("dataUser")
 
       dataUser?.data.following.map(async (id) => {
         const { data } = await axios.get(

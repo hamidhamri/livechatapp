@@ -1,4 +1,6 @@
-export const loginReducer = (state = { userInfo: [] }, action) => {
+import { refreshToken } from "../actions/authAction";
+
+export const loginReducer = (state = { userInfo: [],loading:true }, action) => {
   switch (action.type) {
     case "LOGIN_REQUEST":
       return {
@@ -8,6 +10,24 @@ export const loginReducer = (state = { userInfo: [] }, action) => {
       return {
         loading: false,
         userInfo: action.payload,
+      };
+    case "REFETCH_TOKEN_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "REFETCH_TOKEN":
+      let newData = {
+        ...state,
+        loading: false,
+        userInfo:{...state.userInfo, token:action.payload.token, refreshToken:action.payload.token}
+      };
+      console.log(newData)
+      return newData;
+    case "REFETCH_TOKEN_FAILURE":
+      return {
+        loading: false,
+        error: action.payload,
       };
     case "LOGIN_FAILURE":
       return {
@@ -20,6 +40,7 @@ export const loginReducer = (state = { userInfo: [] }, action) => {
       return state;
   }
 };
+
 
 export const registerReducer = (state = { userInfo: [] }, action) => {
   switch (action.type) {

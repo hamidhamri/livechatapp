@@ -32,7 +32,6 @@ const MyProfile = () => {
     (state) => state.addPost
   );
 
-  console.log(userInfo)
   useEffect(() => {
     if (!userInfo?.data) {
       navigate("/login");

@@ -34,7 +34,6 @@ const Home = () => {
     (state) => state.addPost
   );
 
-  console.log(process.env)
 
   useEffect(() => {
     AOS.init();

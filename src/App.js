@@ -11,6 +11,9 @@ import Followers from "./pages/Followers";
 import Followings from "./pages/Followings";
 import Settings from "./pages/Settings";
 import Active from "./pages/Active";
+import ProtectedRoute from "./pages/ProtectedRoute";
+
+
 import Tes from "./pages/Tes";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from "socket.io-client";
@@ -134,9 +137,8 @@ const App = () => {
       <ToastContainer style={{ fontSize: "1.5rem" }} />
       <Router>
         <Routes>
+          <Route element={<ProtectedRoute/>}>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/chat" element={<Chat />} />
@@ -145,9 +147,13 @@ const App = () => {
           <Route path="/profile/:id/followings" element={<Followings />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/notifications" element={<Notifications />} />
-          <Route path="/active" element={<Active />} />
           <Route path="/test" element={<Tes />} />
           <Route path="*" element={<Home />} />
+          </Route>
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/active" element={<Active />} />
+
         </Routes>
       </Router>
     </div>

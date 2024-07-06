@@ -92,7 +92,6 @@ const PostCard = () => {
         //   }
         // );
         // const data = `https://hamidhamrichatapp.blob.core.windows.net/chatapp/${now}.jpg`;
-        // console.log(data);
         dispatch(addPostAction(description, data, dimensions));
         setErrorImageUpload(false);
         setErrorAddPost(null);

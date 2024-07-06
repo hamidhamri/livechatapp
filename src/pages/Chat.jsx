@@ -40,7 +40,6 @@ const Chat = () => {
   //   socket.emit("addUser", userInfo?.data._id);
   //   socket.on("activeUsers", (data) => {
   //     setOnlineUsers(data);
-  //     console.log("activeUsers", data);
   //   });
 
   //   return () => {
