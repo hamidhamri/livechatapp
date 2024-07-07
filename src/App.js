@@ -14,7 +14,7 @@ import Active from "./pages/Active";
 import ProtectedRoute from "./pages/ProtectedRoute";
 
 
-import Tes from "./pages/Tes";
+import Tes from "./pages/Test";
 import { useSelector, useDispatch } from "react-redux";
 import { io } from "socket.io-client";
 import { notificationsAction, onlineUsersAction } from "./actions/userAction";
@@ -153,7 +153,6 @@ const App = () => {
           <Route path="/login" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/active" element={<Active />} />
-
         </Routes>
       </Router>
     </div>

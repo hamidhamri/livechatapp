@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
+import Loading from "./Loading"
 import { refreshToken } from '../actions/authAction';
 
 
@@ -32,10 +33,7 @@ export default function ProtectedRoute() {
   
   if (loading || !userInfo) {
     // Using Tailwind CSS for styling the loading state
-    return <div className="bg-black h-screen flex justify-center items-center">
-      {/* You can add a spinner or any loading indicator here */}
-      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-    </div>;
+    return <Loading/>
   }  if(error) return <di>ERROR 404</di>  
   return <Outlet/>
 }
